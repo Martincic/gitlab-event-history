@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Git History</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+        <script src="{{ url_for('static',filename='js/jquery.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/tablesorter.js') }}"></script>
+    </head>
+    <body>
+        <main>
+            <h1>Git History</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Action</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for event in events %}
+                        <tr>
+                            <td data-label="Date">
+                                {{event[0]}}
+                            </td>
+                            <td data-label="Time">
+                                {{event[1]}}
+                            </td>
+                            <td data-label="Action">
+                                {{event[2]}}
+                            </td>
+                            <td data-label="Message">
+                                {{event[3]}}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        
+
+            <!-- {% for comment in comments %}
+            <div style="padding: 10px; background-color: #EEE; margin: 20px">
+                <p style="font-size: 24px">{{ comment }}</p>
+            </div>
+            {% endfor %} -->
+
+    </body>
+    <script>
+        $(function(){
+            $('table').tablesorter(); 
+        });
+    </script>
+</html>
